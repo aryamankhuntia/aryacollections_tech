@@ -1,114 +1,119 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  color-scheme: light;
-
-  --ivory: #fffdf9;
-  --cream: #f6f2eb;
-  --cream-soft: #faf8f4;
-  --brown: #29231f;
-  --brown-light: #665d55;
-  --gold: #b88b3d;
-  --gold-light: #d2ad69;
-  --border: #e4ddd3;
-  --green: #21863b;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--cream);
-  color: var(--brown);
-  font-family: Georgia, "Times New Roman", serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-::selection {
-  background: var(--gold-light);
-  color: white;
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1ede6;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #999087;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gold);
-}
-
-/*
-  The reference behaves like a desktop layout
-  even on a ~750px viewport.
-*/
-@media (min-width: 700px) {
-  .desktop-nav {
-    display: flex !important;
+@layer base {
+  /* =========================================
+     1. THEME VARIABLES 
+     Edit colors here to change them globally
+  ========================================= */
+  :root {
+    color-scheme: light;
+    
+    /* Brand Colors */
+    --ivory: #fffdf9;
+    --cream: #f6f2eb;
+    --cream-soft: #faf8f4;
+    --brown: #29231f;
+    --brown-light: #665d55;
+    --gold: #b88b3d;
+    --gold-light: #d2ad69;
+    --border: #e4ddd3;
+    --green: #21863b;
   }
 
-  .desktop-grid-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  /* =========================================
+     2. DOCUMENT DEFAULTS & RESETS
+  ========================================= */
+  * {
+    box-sizing: border-box;
   }
 
-  .desktop-filter {
-    grid-template-columns:
-      125px
-      125px
-      125px
-      minmax(230px, 1fr)
-      65px !important;
+  html {
+    scroll-behavior: smooth;
   }
 
-  .desktop-story {
-    grid-template-columns:
-      minmax(0, 1.02fr)
-      minmax(0, 0.98fr) !important;
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--brown);
+    font-family: Georgia, "Times New Roman", serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-  .desktop-footer {
-    grid-template-columns:
-      1.65fr
-      1fr
-      1fr
-      1fr !important;
+  /* =========================================
+     3. BASE ELEMENTS
+  ========================================= */
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* =========================================
+     4. UI ACCENTS (Selection & Scrollbar)
+  ========================================= */
+  ::selection {
+    background: var(--gold-light);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1ede6;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #999087;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+  }
+}
+
+@layer utilities {
+  /* =========================================
+     5. CUSTOM RESPONSIVE UTILITIES 
+     (Min-width: 700px acts as your desktop breakpoint)
+  ========================================= */
+  @media (min-width: 700px) {
+    .desktop-nav {
+      display: flex !important;
+    }
+
+    .desktop-grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+
+    .desktop-filter {
+      grid-template-columns: 125px 125px 125px minmax(230px, 1fr) 65px !important;
+    }
+
+    .desktop-story {
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr) !important;
+    }
+
+    .desktop-footer {
+      grid-template-columns: 1.65fr 1fr 1fr 1fr !important;
+    }
   }
 }
