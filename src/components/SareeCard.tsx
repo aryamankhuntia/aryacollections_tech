@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { Saree } from '@/lib/supabase';
 import { MessageCircle } from 'lucide-react';
+import Link from 'next/link';
 
 // --- HELPER FUNCTION ---
 function isValidUrl(urlString: string | null | undefined): boolean {
@@ -29,7 +30,10 @@ export default function SareeCard({ saree }: { saree: Saree }) {
     <article className="group flex h-full min-w-0 flex-col overflow-hidden border border-[#e3ddd4] bg-white">
       
       {/* 1. IMAGE SECTION */}
-      <div className="relative aspect-[0.9] w-full overflow-hidden bg-[#ebe6de]">
+      <Link
+        href={`/sarees/${saree.id}`}
+        className="relative block aspect-[0.9] w-full overflow-hidden bg-[#ebe6de]"
+      >
         {hasValidImage ? (
           <Image
             src={saree.image_url}
@@ -51,16 +55,19 @@ export default function SareeCard({ saree }: { saree: Saree }) {
             Sold Out
           </div>
         )}
-      </div>
+      </Link>
 
       {/* 2. PRODUCT DETAILS SECTION */}
       <div className="flex flex-1 flex-col px-2.5 py-2.5">
         
         <div className="flex items-start justify-between gap-2">
           {/* Saree Title - Edit font size here */}
-          <h3 className="min-w-0 font-serif text-base font-normal leading-[1.4] text-[#302a26]">
+          <Link
+            href={`/sarees/${saree.id}`}
+            className="min-w-0 font-serif text-base font-normal leading-[1.4] text-[#302a26] hover:text-[#a54839]"
+          >
             {saree.title}
-          </h3>
+          </Link>
 
           {/* Saree Price - Edit font size here */}
           <span className="shrink-0 text-base font-medium text-[#a54839]">
